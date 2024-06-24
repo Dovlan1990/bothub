@@ -33,6 +33,7 @@ export class BooksService {
     return book;
   }
 
+  //тут лучше бы транзакцию
   async update(id: number, data: BookUpdateDTO): Promise<Book> {
     const book = await this.prisma.books.findUnique({ where: { id } });
     if (!book) {
@@ -44,6 +45,7 @@ export class BooksService {
     });
   }
 
+  //и тут
   async remove(id: number): Promise<'Ok'> {
     const book = await this.prisma.books.findUnique({ where: { id } });
     if (!book) {
